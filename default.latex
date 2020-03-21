@@ -2,7 +2,7 @@
 \PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 $if(colorlinks)$
-\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*,table}{xcolor}
 $endif$
 $if(dir)$
 $if(latex-dir-rtl)$
@@ -369,7 +369,7 @@ $if(csl-refs)$
 $endif$
 
 $if(title)$
-\title{$title$$if(thanks)$\thanks{$thanks$}$endif$}
+\title[$short-title$ (Revision: $revision$)]{$title$$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
 $if(subtitle)$
 $if(beamer)$
@@ -390,10 +390,10 @@ $if(institute)$
 \institute{$for(institute)$$institute$$sep$ \and $endfor$}
 $endif$
 $if(titlegraphic)$
-\titlegraphic{\includegraphics{$titlegraphic$}}
+\titlegraphic{\includegraphics[height=2cm]{$titlegraphic$}}
 $endif$
 $if(logo)$
-\logo{\includegraphics{$logo$}}
+\logo{\includegraphics[width=2cm]{$logo$}}
 $endif$
 $endif$
 
