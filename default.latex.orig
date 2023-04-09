@@ -2,7 +2,7 @@
 \PassOptionsToPackage{unicode$for(hyperrefoptions)$,$hyperrefoptions$$endfor$}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 $if(colorlinks)$
-\PassOptionsToPackage{dvipsnames,svgnames*,x11names*,table}{xcolor}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
 $endif$
 $if(CJKmainfont)$
 \PassOptionsToPackage{space}{xeCJK}
@@ -292,12 +292,7 @@ $if(svg)$
 $endif$
 $if(strikeout)$
 $-- also used for underline
-\ifLuaTeX
-  \usepackage{luacolor}
-  \usepackage[soul]{lua-ul}
-\else
-  \usepackage{soul}
-\fi
+\usepackage{soul}
 $endif$
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
@@ -363,15 +358,15 @@ $if(babel-lang)$
 $if(mainfont)$
 \ifPDFTeX
 \else
-\babelfont[$babel-lang$]{rm}[$for(mainfontoptions)$$mainfontoptions$$sep$,$endfor$]{$mainfont$}
+\babelfont[$babel-lang$]{rm}{$mainfont$}
 \fi
 $endif$
 $endif$
 $for(babel-otherlangs)$
 \babelprovide[import]{$babel-otherlangs$}
 $endfor$
-$for(babelfonts/pairs)$
-\babelfont[$babelfonts.key$]{rm}{$babelfonts.value$}
+$for(babelfonts)$
+\babelfont[$babelfonts.language$]{rm}{$babelfonts.font$}
 $endfor$
 % get rid of language-specific shorthands (see #6817):
 \let\LanguageShortHands\languageshorthands
@@ -474,35 +469,6 @@ $if(titlegraphic)$
 $endif$
 $if(logo)$
 \logo{\includegraphics{$logo$}}
-$endif$
-$endif$
-
-$if(title)$
-\title[$short-title$ (Revision: $revision$)]{$title$$if(thanks)$\thanks{$thanks$}$endif$}
-$endif$
-$if(subtitle)$
-$if(beamer)$
-$else$
-\usepackage{etoolbox}
-\makeatletter
-\providecommand{\subtitle}[1]{% add subtitle to \maketitle
-  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
-}
-\makeatother
-$endif$
-\subtitle{$subtitle$}
-$endif$
-\author{$for(author)$$author$$sep$ \and $endfor$}
-\date{$date$}
-$if(beamer)$
-$if(institute)$
-\institute{$for(institute)$$institute$$sep$ \and $endfor$}
-$endif$
-$if(titlegraphic)$
-\titlegraphic{\includegraphics[height=2cm]{$titlegraphic$}}
-$endif$
-$if(logo)$
-\logo{\includegraphics[width=2cm]{$logo$}}
 $endif$
 $endif$
 
