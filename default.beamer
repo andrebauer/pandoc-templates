@@ -107,7 +107,7 @@ $after-header-includes.latex()$
 $hypersetup.latex()$
 
 $if(title)$
-\title$if(shorttitle)$[$shorttitle$ $if(revision)$Revision: $revision$$endif$]$endif${$title$$if(thanks)$\thanks{$thanks$}$endif$}
+\title$if(shorttitle)$[$shorttitle$ $if(revision)$(Revision: $revision$)$endif$]$endif${$title$$if(thanks)$\thanks{$thanks$}$endif$}
 $endif$
 $if(subtitle)$
 \subtitle$if(shortsubtitle)$[$shortsubtitle$]$endif${$subtitle$}
